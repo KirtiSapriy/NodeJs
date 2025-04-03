@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+    <form action="/UpdateTask"
+        class=" lg:h-66 border-2 border shadow-lg   my-4 rounded-lg w-11/12 md:w-8/12 lg:w-5/12 p-3 lg:p-5 m-auto py-10"
+        method="post">
+        <h1 class="text-2xl font-bold my-2">Edit Task</h1>
+        <div class="w-11/12    py-4 m-auto my-3 grid grid-rows-3 gap-5">
+            <input type="text" class="hidden" name="id" value="<%=singlTask.id%>">
+            <input type="text" class="hidden" name="status" value="<%=singlTask.status%>">
+            <input type="text" class="border px-4 m-auto py-1 placeholder:text-black w-11/12 rounded"
+                value="<%=singlTask.Task%>" placeholder="Enter Task" name="Task" id="">
+            <select name="Priority" class="border px-4 m-auto py-1 placeholder:text-black w-11/12 rounded"
+                value="<%=singlTask.Priority%>" id="">
+                <optgroup>Priotity</optgroup>
+                <option value="">Select Task Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <button type="submit" class="border w-4/12 rounded mx-5 hover:bg-black hover:text-white font-semibold">Updete</button>
+        </div>
+    </form>
+</body>
+
+</html>

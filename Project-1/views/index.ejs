@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="h-auto w-full md:w-11/12 m-auto">
+        <form action="/addTask"
+            class=" lg:h-66 border-2 shadow-lg   my-4 rounded-lg w-11/12 md:w-8/12 lg:w-5/12 p-3 lg:p-5 m-auto py-10"
+            method="post">
+            <h3 class="text-2xl font-bold my-2">Task Manager</h3>
+            <div class="w-11/12    py-4 m-auto my-3 grid grid-rows-3 gap-5">
+                <input type="text" class="border px-4 m-auto py-1 placeholder:text-black w-11/12 rounded"
+                    placeholder="Enter Task..." name="Task" id="" required>
+                <select name="Priority" id="" class=" px-4 m-auto py-1 w-11/12  border rounded">
+                    <optgroup label="Priority" aria-required="true">
+                        <option value="">Select Task Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </optgroup>
+                </select>
+                <button type="submit"
+                    class="border w-4/12 rounded mx-5 hover:bg-black hover:text-white font-semibold">Submit</button>
+            </div>
+        </form>
+
+        <table class="w-11/12 lg:w-7/12 m-auto">
+            <thead>
+                <tr class=" gap-4  ">
+                    <th class=" lg:px-7 "></th>
+                    <th class=" lg:px-7 ">Task</th>
+                    <th class=" lg:px-7 ">Priority</th>
+                    <th class=" lg:px-7 ">Status </th>
+                    <th class=" lg:px-7 " colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <% if(TaskData.length==0){ %>
+                    <td colspan="6" class="text-md text-center h-10 font-semibold">No Tasks</td>
+                    <%} else { %>
+                        <% TaskData.map((el, id)=> { %>
+                            <tr class="gap-4 h-10 capitalize">
+                                <td class="flex justify-center pt-[14px] ">
+                                    <input type="checkbox" class=" "
+                                        onchange="window.location.href='/isStatus/<%=el.id%>'" <%=el.status ?'checked'
+                                        : '' %>
+                                    <%= el.status ? 'disabled' : '' %> name="status"
+                                        id="">
+                                </td>
+                                <td class="text-center">
+                                    <%= el.Task %>
+                                </td>
+                                <td class="text-center">
+                                    <%= el.Priority %>
+                                </td>
+                                <td class="text-center">
+                                    <%= el.status ? 'completed' : 'pending' %>
+                                </td>
+                                <td class="text-center">
+                                    <% if (!el.status) { %>
+                                        <a href="/edit/<%=el.id%>" class="w-11/12 text-white px-5 py-1 rounded bg-green-400">Edit</a>
+                                        <% } else { %>
+                                            <span class="w-11/12  px-5 py-1 rounded bg-gray-400 text-white">Edit</span>
+                                            <% } %>
+                                </td>
+                                <td class="text-cenetr">
+                                    <a href="/deleteTask?id=<%=el.id%>"
+                                        class="w-11/12 text-white px-5 py-1 rounded hover:bg-red-700 bg-red-600">Delete</a>
+                                </td>
+                            </tr>
+                            <% }) }%>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
