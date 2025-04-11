@@ -1,0 +1,105 @@
+what is miiddleware?
+
+ middleware functions are functions that have access to the request object 
+ (req), the response object (res), and the next function in the application's 
+ request-response cycle. These functions can execute code, modify the request and
+  response objects, end the request-response cycle, or call the next middleware 
+  function in the stack. 
+
+what is database ?
+type of database? 
+type of sql database ?
+type of non sql database? 
+
+
+i canare use mongoDb ?
+stap  1 : mongoDb compass
+and second mongoDb id commniti 
+
+Atlas database is cloud database 
+
+
+some requrin use database 
+
+1.create folder name config
+2 create file db/database.js
+3.install npm i mongoose 
+4 go file db 
+   code  
+     const mongoose= require("mongoose");
+
+     mongoose.connect("mongodb://127.0.0.1") this is defualt connnection
+
+5. 
+     mongoose.connect("mongodb://127.0.0.1/database name") 
+
+     now create 
+      
+      const db=mongoose.connection
+
+      
+      sckim is blueprint  which decides how data store in mongoDb 
+
+      ceare one folder mmodal 
+      create firstSchema.js
+
+
+      delete data use findByIdAndDelete()
+
+      get singel data use FindById()
+
+      update data use findByIdAndUpdate
+
+
+
+<td><a href="/deleteData?id=<%=el.id%>">Delete</a></td>  ejs
+
+i canare run one fuction to delete data in db 
+app.get('/deleteData', async (req, res) => {
+    try {
+        await schema.findByIdAndDelete(req.query.id)
+        res.redirect('/')
+    }
+    catch (er) {
+        console.log(er);
+
+    }
+})
+
+i am  use schema.findByIdAndDelete 
+    use to delete database
+   i am pass inside the method id req.query.id it's use identify data on database (mongoDb)
+   after the identify data this method delete data in database and now i am redirect in index.ejs 
+
+ <td><a href="/editData?id=<%=el.id%>">Edit</a></td>
+app.get('/editData', async (req, res) => {
+    try {
+        await schema.findById(req.query.id).then((data) => {
+            res.render('update', { data })
+        })
+    } catch (er) {
+        console.log(er);
+
+    }
+})
+
+i am use schema.findById for catch singel data in database 
+  req.query.id use identify singel data and now i am render   update ( form /seconde ejs page ) and pass data for fillup form  
+
+app.post('/updateData', async (req, res) => {
+    try {
+        
+        await schema.findByIdAndUpdate(req.body.id, req.body)
+        res.redirect('/')
+    }
+    catch (er) {
+        console.log(er);
+
+    }
+})
+
+after form submition run /updateData in script.js 
+
+  schema.findByIdAndUpdate  use update data that inside pass two veriabl first is req.body.id (use which data update identify in database ) 
+     second is req.body (this update data pass for update ) 
+     and  after this i am redirectin index page 

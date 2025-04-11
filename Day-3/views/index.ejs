@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body>
+
+    <h1>Hello</h1>
+
+    <form action="/getData" method="post">
+        <input type="text" name="name" placeholder="Enter name">
+        <br>
+        <input type="text" name="subject" placeholder="Enter Subject">
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+    <table border="1">
+        <tbody>
+            <%data.map((el,i)=>{%>
+
+                <tr>
+                    <td>
+                        <%=el.id%>
+                    </td>
+                    <td>
+                        <%=el.name%>
+                    </td>
+                    <td>
+                        <%=el.subject%>
+                    </td>
+                    <td>
+                        <a href="/Edit/<%=el.id%>">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/deleteData?id=<%=el.id%>">delete</a>
+                    </td>
+                </tr>
+
+                <%})%>
+        </tbody>
+        <tr></tr>
+    </table>
+
+</body>
+
+</html>

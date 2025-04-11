@@ -1,0 +1,206 @@
+Express is a Back end web appliction framework.
+it use create web appliction and Rest Apis
+
+It provides tools and features for handling routing, middleware, and templating, 
+allowing developers to create robust server-side applications more efficiently. 
+It is considered the standard framework for Node.js.
+
+set up express js:
+stap 1 : run command on terminal
+ npm i express
+
+ it's create node_modules ,package-lock and package file
+
+stap 2 : create node server with express
+
+    Exmpal: 
+       
+       code: 
+           
+           const express = require('express');
+
+            const port = 2000;
+
+            const app = express();
+
+            app.listen(port, (err) => {
+                err ? console.log(err) : console.log("server start");
+            })
+
+    this code create only your server with express.
+
+    Express.js is a minimal and flexible Node.js web application framework that simplifies building web 
+    applications and APIs by providing features for routing, middleware, and HTTP utilities.
+
+
+Express js is a back end framework and it's allow to create serve apis but it not use for frontend but it allow to use 
+Templating  .
+
+
+Template :
+    A template in Node.js refers to a way to generate dynamic HTML content. 
+    Instead of writing static HTML files, templates allow developers to embed
+    data and logic within HTML structures.
+
+    In Node.js, a template engine facilitates the generation of dynamic HTML 
+    content on the server side. 
+ 
+    we are using Ejs tempalte with node 
+
+        Ejs:
+           EJS, or Embedded JavaScript, is a simple templating language that
+            allows you to generate HTML markup using plain JavaScript, making
+            it easy to embed dynamic content and logic into your web pages. 
+
+        Ejs setup:
+         
+         stap 1: run command in terminal
+            npm i ejs
+         
+         stap 2: some code in index.js file 
+
+               CODE: app.set('view engine', 'ejs');
+
+               configures the application to use the EJS (Embedded JavaScript Templates)
+               engine for rendering views, meaning that the server will use EJS to parse 
+               template files into HTML and send the rendered HTML to the client.  
+         
+         stap 3: then crate view folder and create index.ejs files
+             
+             The "views" folder is crucial in EJS because it's the default location where 
+             EJS looks for template files when rendering views in an Express.js application,
+             simplifying the management and organization of your templates. 
+             
+             and index file save with .ejs extantion this allow to write html code and js code 
+             sepret file we can not need diffrent files.
+
+             you can write html code in this ejs file :
+
+               exmapale :
+                  
+                  <!DOCTYPE html>
+                    <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Document</title>
+                        </head>
+                        <body>
+                            <h1>Hello </h1>
+                            <h1>Welcome to Node, </h1>
+                        </body>
+                    </html>
+
+         stap 4 : render index.ejs in index.js(server)
+
+            code: app.get("/", (req, res) => {
+                    res.render("index");
+                    })
+
+                    this code render your code and show your html code (ui)
+
+    this is set up of ejs with express in node.
+
+if some back-end data show in  you frontend  ,some stap  are there 
+
+  stap 1: we can not use api than create some static data in index.js
+      
+      let studentsData = [{ id: 1, name: "kirti", subject: "node" },
+      { id: 2, name: "janvi", subject: "react" }];
+
+  stap 2 : this data we are pass in ejs file that code is
+
+   res.render("index", { studentsData });  
+
+   we can render index file then crate currli barsis and inside  pass variabla name
+
+
+ stap 3:now time is go ejs file
+    
+        <table border="1">
+          <thead></thead>
+          <tbody>
+              <%studentsData.map((el,i)=>{%>
+                  <tr>
+                      <td>
+                          <%=el.id%>
+                      </td>
+                      <td>
+                          <%=el.name%>
+                      </td>
+                      <td>
+                          <%=el.subject%>
+                      </td>
+                  </tr>
+                  <%})%>
+          </tbody>
+      </table>
+
+    we can use js in ejs file and write code js in inside html code 
+
+
+    some this is we can remamber is 
+    1. if use ejs inside js the use  <%%> this sembol we are write code <% js code %>
+    2. you can start code and close code in semline if start code this line then comlite in this line  
+    Exmpale is
+    wrong code:   <% 
+                    js code
+                  %>
+
+    right code: <% js code %>
+
+    3.if you can get value then use = sing like <%=value%>
+
+
+    Day-4
+
+
+    qury and prems 
+
+    quray =path?id=4 static
+    quray= path?id=<%=el.id%>
+
+
+
+what is miiddleware?
+
+ middleware functions are functions that have access to the request object 
+ (req), the response object (res), and the next function in the application's 
+ request-response cycle. These functions can execute code, modify the request and
+  response objects, end the request-response cycle, or call the next middleware 
+  function in the stack. 
+
+Middleware functions are used for a variety of tasks, including:
+Authentication: Verifying the identity of a user.
+Authorization: Determining if a user has permission to access a resource.
+Logging: Recording information about requests and responses.
+Error handling: Catching and handling errors that occur in the application.
+Data processing: Modifying the request or response data.
+
+Path
+
+The path module in Node. js is a built-in module that provides
+ utilities for working with file and directory paths. It helps 
+ in constructing, manipulating, and working with file and directory 
+ paths in a cross-platform manner, making it easier to write 
+ platform-independent code.
+
+ The path module in Node.js provides utilities for working with 
+ file and directory paths, offering a way to manipulate file paths
+ in a cross-platform manner. It is a built-in module, so it 
+ doesn't require installation. 
+
+
+ Here's a breakdown of its uses: 
+Path manipulation:
+The path module provides methods to parse, join, normalize, 
+and resolve paths. This is useful for constructing file paths
+dynamically and ensuring they are valid regardless of the 
+operating system.
+path.join(): Joins multiple path segments into a single path.
+path.resolve(): Resolves a sequence of paths into an absolute path.
+path.normalize(): Normalizes a path string, resolving .. and . 
+segments.
+path.parse(): Parses a path string into an object with its
+components (root, dir, base, ext, name).
+path.format(): Formats a path object into a path string.

@@ -48,8 +48,8 @@
                             <tr class="gap-4 h-10 capitalize">
                                 <td class="flex justify-center pt-[14px] ">
                                     <input type="checkbox" class=" "
-                                        onchange="window.location.href='/isStatus/<%=el.id%>'" <%=el.status ?'checked'
-                                        : '' %>
+                                        onchange="window.location.href='/isStatus/<%=el.id%>'"
+                                         <%=el.status ?'checked': '' %>
                                     <%= el.status ? 'disabled' : '' %> name="status"
                                         id="">
                                 </td>
@@ -64,7 +64,8 @@
                                 </td>
                                 <td class="text-center">
                                     <% if (!el.status) { %>
-                                        <a href="/edit/<%=el.id%>" class="w-11/12 text-white px-5 py-1 rounded bg-green-400">Edit</a>
+                                        <a href="/edit/<%=el.id%>"
+                                            class="w-11/12 text-white px-5 py-1 rounded bg-green-400">Edit</a>
                                         <% } else { %>
                                             <span class="w-11/12  px-5 py-1 rounded bg-gray-400 text-white">Edit</span>
                                             <% } %>

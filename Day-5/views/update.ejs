@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/updateData" method="post" style="width: 50%; margin: auto;">
+        <fieldset>
+            <legend style="font-weight: bold;">Student Data Add</legend>
+            <input type="text" value="<%=data.id%>"  name="id" hidden><br>
+            <input type="text" value="<%=data.name%>" name="name" placeholder="Enter name"><br><br>
+            <input type="text" value="<%=data.subject%>" name="subject" placeholder="Enter Subject"><br><br>
+            <input type="text" value="<%=data.city%>" name="city" placeholder="Enter City"><br><br>
+            <input type="text" value="<%=data.study%>" name="study" placeholder="Enter last/curent Study"><br><br>
+            <button type="submit">Submit</button><br><br>
+        </fieldset>
+
+    </form>
+</body>
+
+</html>

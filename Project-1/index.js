@@ -39,10 +39,7 @@ app.get("/isStatus/:id", (req, res) => {
             TaskData[i] = status
         }
     })
-
     res.redirect('/')
-
-
 
 })
 app.post("/UpdateTask", (req, res) => {
@@ -57,6 +54,5 @@ app.post("/UpdateTask", (req, res) => {
 })
 app.listen(port, (err) => {
     err ? console.log(err) : console.log(`Server start port no. ${port}`);
-    ;
 
 })

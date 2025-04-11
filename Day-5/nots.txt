@@ -1,0 +1,22 @@
+third party module npm i multer 
+
+middlewere  > multer > 
+    
+  const multer = require('multer")
+  
+  const storege=multer.diskStorege({
+	destination:(req,file,cb)=>{
+	cb(null,'uploads/')
+	},
+        filename:(req,file,cb)=>{
+	cd(null,file,fieldname+"-"+date.now())
+	},
+  })
+
+  const upload=multer({storege:storege}).single("image")
+
+
+
+req=requat
+file=file
+cb=callback fuction
