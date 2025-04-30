@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="/addData" method="post">
+        <fieldset>
+            <legend>Add data</legend>
+            <br>
+            <input type="text" placeholder="Enter Name" name="Name" id=""><br><br>
+            <input type="text" placeholder="Enter Subject" name="Subject" id=""><br><br>
+            <input type="text" placeholder="Enter City" name="City" id=""><br><br>
+            <button type="submit">Add Data</button>
+            <br><br>
+        </fieldset>
+    </form>
+    <br>
+    <center>
+        <table border="2" cellpadding="3" cellspacing="5" width="50%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>City</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%data.map((el,i)=>{%>
+                    <tr>
+                        <td>
+                            <%=el.id%>
+                        </td>
+                        <td>
+                            <%=el.Name%>
+                        </td>
+                        <td>
+                            <%=el.Subject%>
+                        </td>
+                        <td>
+                            <%=el.City%>
+                        </td>
+                        <td><a href="/editData?id=<%=el.id%>"><button>Edit</button></a></td>
+                        <td><a href="/deleteData?id=<%=el.id%>"><button>Delete</button></a></td>
+
+
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>

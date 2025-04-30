@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="/addData" method="post" style="width: 50%; margin: auto;">
+        <fieldset>
+            <legend>Add Data</legend>
+            <br>
+            <input type="text" name="name" placeholder="Enter Name"><br><br>
+            <input type="text" name="subject" placeholder="Enter Subject"><br><br>
+            <input type="text" name="city" placeholder="Enter City"><br><br>
+            <input type="file" name="image"><br><br>
+
+            <button type="submit">Submit</button><br>
+        </fieldset>
+    </form>
+    <br>
+    <center>
+        <table border="2" cellpadding="3" cellspacing="4" width="50%">
+
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>City</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%students.map((el,i)=>{%>
+                    <tr>
+                        <td>
+                            <img src="<%=el.image%>" alt="">
+                        </td>
+                        <td>
+                            <%=el.name%>
+                        </td>
+                        <td>
+                            <%=el.subject%>
+                        </td>
+                        <td>
+                            <%=el.city%>
+                        </td>
+                        <td><a href=" /Edit?id=<%=el.id%>"><button>Edit</button></a>
+                        </td>
+                        <td><a href="/Delete?id=<%=el.id%>"><button>Delete</button></a></td>
+
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>

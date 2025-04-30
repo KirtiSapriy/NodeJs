@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen relative">
+
+    <!-- Header -->
+    <%-include('header')%>
+
+        <!-- Movie Grid -->
+        <main class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+            <!-- Movie Card -->
+            <%data.map((el,i)=>{%>
+                <div class="bg-gray-800 h-97  rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
+                    <img src="<%=el.poster%>" alt="Movie Poster" class="w-full h-72  object-cover" />
+                    <div class="py-1 px-3 grid grid-rows-3 ">
+                        <h2 class="text-lg font-bold">
+                            <%=el.title%>
+                        </h2>
+                        <p class="text-sm text-gray-400">
+                            <%=el.genre%> | <%=el.year%>
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="grid grid-cols-2">
+                                <a href="editData?id=<%=el.id%>"><button
+                                        class="bg-green-500 text-gray-900 text-sm px-3 py-1 rounded hover:bg-green-600">
+                                        Edit
+                                    </button></a>
+                                <a href="/deleteData?id=<%=el.id%>"> <button
+                                        class="bg-red-600 text-gray-900 text-sm px-3 py-1 rounded hover:bg-red-700">
+                                        Delete
+                                    </button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+
+        </main>
+
+</body>
+
+</html>

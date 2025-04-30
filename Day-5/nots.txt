@@ -20,3 +20,34 @@ middlewere  > multer >
 req=requat
 file=file
 cb=callback fuction
+
+
+ 
+new courr module fs
+
+fs stands for File System
+
+   It is a built-in module that provides a way to interact with the file system on your computer, 
+allowing you to perform operations such as reading, writing, creating, and deleting files and 
+directories. The fs module is essential for any Node.js application that needs to work with files.
+
+fs= require(fs)
+
+
+next
+app.get('/deleteData', async (req, res) => {
+     let singlData = await schema.findById(req.query.id);
+
+    fs.unlinkSync(singlData.image)
+    try {
+        await schema.findByIdAndDelete(req.query.id)
+        res.redirect('/')
+    }
+    catch (er) {
+        console.log(er);
+
+    }
+})
+
+
+
