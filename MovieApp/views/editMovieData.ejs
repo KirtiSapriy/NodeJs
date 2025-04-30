@@ -21,7 +21,7 @@
 
                 <form action="/updateMovieData" method="post" enctype="multipart/form-data" class="space-y-5">
 
-                    <input type="text" value="<%=data.id%>" name="id">
+                    <input type="text" value="<%=data.id%>" hidden name="id">
                     <div>
                         <label for="poster" class="block mb-1 font-semibold">Poster Image</label>
                         <input type="file" id="poster" name="poster" value="<%=data.poster%>"
