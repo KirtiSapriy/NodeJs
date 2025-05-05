@@ -2,9 +2,10 @@ const express = require('express')
 
 const router = express.Router()
 const ctl = require("../controller/ctl")
+const passport = require('../middleware/passport')
 
 router.get('/', ctl.login)
-router.post('/login', ctl.userLogin)
+router.post('/login', passport.authenticate('local', { failureRedirect: '/' }), ctl.userLogin)
 router.get('/logout', ctl.userLogout)
 router.get('/dashboard', ctl.dashboard)
 router.get('/addAdmin', ctl.addAdmin)

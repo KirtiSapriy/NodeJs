@@ -6,51 +6,24 @@ module.exports.login = (req, res) => {
 }
 module.exports.userLogin = async (req, res) => {
 
-    let admin = await Schema.findOne({ email: req.body.email })
-
-    if (admin) {
-        if (admin.password == req.body.password) {
-            res.cookie('admin', admin)
-            res.redirect('/dashboard')
-        }
-        else {
-            res.redirect("/")
-        }
-    } else {
-        res.redirect("/")
-    }
-
+    res.redirect('/dashboard')
 
 }
 module.exports.dashboard = (req, res) => {
-    if (req.cookies.admin) {
-        res.render("dashboard")
-    }
-    else {
-        res.redirect('/')
-    }
+    res.render("dashboard")
 }
 module.exports.userLogout = (req, res) => {
-    res.clearCookie('admin')
     res.redirect("/")
 }
 module.exports.addAdmin = (req, res) => {
-    if (req.cookies.admin) {
 
-        res.render("addminRegister")
-    } else {
-        res.redirect('/')
-    }
+    res.render("addminRegister")
 }
 module.exports.viewAdmin = async (req, res) => {
-    if (req.cookies.admin) {
 
-        await Schema.find({}).then((data) => {
-            res.render("viewAdmin", { data })
-        }).catch((er) => console.log(er))
-    } else {
-        res.redirect('/')
-    }
+    await Schema.find({}).then((data) => {
+        res.render("viewAdmin", { data })
+    }).catch((er) => console.log(er))
 
 }
 

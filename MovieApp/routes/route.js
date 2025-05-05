@@ -8,7 +8,7 @@ route.get('/movieData', ctl.addMoviePage)
 route.post('/addMovieData', multer, ctl.addMovieData)
 route.get('/deleteData', ctl.deleteMovieData)
 route.get('/editData', ctl.editMovieData)
-route.post('/updateMovieData',multer, ctl.updateMovieData)
+route.post('/updateMovieData', multer, ctl.updateMovieData)
 
 
 
