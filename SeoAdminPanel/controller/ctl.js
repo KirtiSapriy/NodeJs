@@ -52,3 +52,6 @@ module.exports.updateAdminData = async (req, res) => {
         res.redirect('/dashboard')
     })
 }
+module.exports.profile = (req, res) => {
+    res.render('profile')
+}
