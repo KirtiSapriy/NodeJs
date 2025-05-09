@@ -30,7 +30,17 @@ passport.deserializeUser(async (adminId, done) => {
     } else {
         return done(null, false);
     }
-});
+})
+
+passport.checkAuth = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        res.locals.admin = req.user
+        next()
+    }
+    else {
+        res.redirect('/')
+    }
+}
 
 
 module.exports = passport
