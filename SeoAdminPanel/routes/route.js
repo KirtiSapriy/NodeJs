@@ -15,5 +15,10 @@ router.get('/deleteAdminData', passport.isAuth, ctl.deleteAdminData)
 router.get('/editAdminData', passport.isAuth, ctl.editAdminData)
 router.post('/updateAdminData', passport.isAuth, ctl.updateAdminData)
 router.get('/profile', passport.isAuth, ctl.profile)
+router.get('/changePassword', passport.isAuth, ctl.changePassword)
+router.post('/changePass', passport.isAuth, ctl.changePass)
+router.get('/forgotPass', ctl.forgotPass)
+router.post('/getOTP', ctl.getOTP)
+router.post('/setPass', ctl.setPass)
 
 module.exports = router

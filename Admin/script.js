@@ -10,8 +10,9 @@ const session = require('express-session')
 const connectFlash = require('connect-flash')
 const flash = require('./middleware/flash')
 app.set('view engine', 'ejs')
-
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookie())
@@ -29,7 +30,12 @@ app.use(passport.initialize())
 app.use(connectFlash())
 app.use(flash.setFlash)
 
+
 app.use('/', require('./routes/route'))
+app.use('/category', require('./routes/categoryroute'))
+app.use('/subCategory', require('./routes/subCategory'))
+app.use('/products', require('./routes/Productroute'))
+
 
 app.listen(port, (er) => {
     er ? console.log(er) : console.log('Server Start Port No. ' + port);
