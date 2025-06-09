@@ -35,6 +35,9 @@ const Schema = mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
+    },
+    image: {
+        type: String
     }
 })
 

@@ -95,6 +95,8 @@ module.exports.employeeAdd = async (req, res) => {
     req.body.password = await bcrypt.hash(req.body.password, 10)
     req.body.managerId = req.user.id
 
+    req.body.image = req.file.path
+
     await Schema.create(req.body).then(() => {
 
         let to = req.body.email
