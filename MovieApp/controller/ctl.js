@@ -1,5 +1,4 @@
 
-const { log } = require('console')
 const Schema = require('../modals/schema')
 const fs = require("fs")
 

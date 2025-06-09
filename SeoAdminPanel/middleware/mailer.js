@@ -4,7 +4,7 @@ let trasport = mailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'sapriyak01@gmail.com',
-        pass: 'bvbv pghk ujbc hhhf'
+        pass: 'bvbvpghkujbchhhf'
     }
 })
 

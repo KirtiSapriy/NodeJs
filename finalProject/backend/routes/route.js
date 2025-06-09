@@ -1,0 +1,18 @@
+const express = require('express')
+const route = express.Router()
+const ctl = require('../controller/ctl')
+const auth = require('../middleware/auth')
+const otpCheck = require('../middleware/checkOtp')
+
+route.post('/addUser', ctl.addUser)
+route.post('/login', ctl.login)
+route.get('/viewProfile', auth, ctl.profile)
+route.put('/changePassword', auth, ctl.changePassword)
+route.post('/forgotPass', ctl.ForgotPass)
+route.put('/recoverAccount', otpCheck, ctl.recoverAccount)
+route.post('/addManager', auth, ctl.mangerAdd)
+route.get('/showManager', auth, ctl.showManager)
+route.patch('/isActive/:id', auth, ctl.isManagerActive)
+route.get('/showEmployee', auth, ctl.showEmployee)
+route.patch('/isEmployeeActive/:id', auth, ctl.isEmployeeActive)
+module.exports = route

@@ -21,9 +21,9 @@ module.exports.addProducts = async (req, res) => {
 
 module.exports.viewProducts = async (req, res) => {
 
-    // await subCatSchema.find({}).populate('CategoryId').then((data) => {
-    //     console.log(data);
-    //     res.render('viewSubCat', { data })
-    // })
+    await subCatSchema.find({}).populate('CategoryId').then((data) => {
+        console.log(data);
+        res.render('viewSubCat', { data })
+    })
 
 }
